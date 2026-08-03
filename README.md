@@ -139,4 +139,6 @@ Consent-Frage neu bewertet werden.
   Bogdanow lagen keine Funktionsbezeichnungen vor; sie sind deshalb noch nicht
   auf der Teamseite. Porträts sind vorhanden.
 - Eva Poelmeyer hat kein Foto aus dem Shooting — sie wird mit Initialen dargestellt.
-- Einverständnis der abgebildeten Mitarbeitenden zur Veröffentlichung prüfen
+
+Das Einverständnis der abgebildeten Mitarbeitenden zur Veröffentlichung liegt vor
+(bestätigt am 3. August 2026).
