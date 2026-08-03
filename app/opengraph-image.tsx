@@ -17,7 +17,7 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           padding: "80px",
           background:
-            "radial-gradient(120% 80% at 10% 0%, #226b4c 0%, transparent 60%), radial-gradient(90% 70% at 100% 100%, #1c583f 0%, transparent 55%), #0b2d23",
+            "radial-gradient(120% 80% at 10% 0%, #2b5827 0%, transparent 60%), radial-gradient(90% 70% at 100% 100%, #224622 0%, transparent 55%), #142c17",
           fontFamily: "sans-serif",
         }}
       >
@@ -27,12 +27,12 @@ export default function OpengraphImage() {
               width: 18,
               height: 18,
               borderRadius: 999,
-              background: "#6fae91",
+              background: "#8bc53e",
             }}
           />
           <div
             style={{
-              color: "#98c6ae",
+              color: "#a8d46a",
               fontSize: 26,
               letterSpacing: 4,
               textTransform: "uppercase",
@@ -56,7 +56,7 @@ export default function OpengraphImage() {
           </div>
           <div
             style={{
-              color: "#c3ddcf",
+              color: "#c6e4a1",
               fontSize: 34,
               marginTop: 28,
               lineHeight: 1.3,
@@ -72,7 +72,7 @@ export default function OpengraphImage() {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            color: "#98c6ae",
+            color: "#a8d46a",
             fontSize: 24,
             borderTop: "1px solid rgba(255,255,255,0.15)",
             paddingTop: 32,

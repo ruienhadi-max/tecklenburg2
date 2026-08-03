@@ -7,34 +7,48 @@
    ========================================================================== */
 
 @theme {
-  /* Grüntöne: von tiefem Nadelgrün bis zu fast weißem Dunst. */
-  --color-pine-950: #06211a;
-  --color-pine-900: #0b2d23;
-  --color-pine-800: #10382b;
-  --color-pine-700: #164634;
-  --color-pine-600: #1c583f;
-  --color-moss-600: #226b4c;
-  --color-moss-500: #2c8460;
-  --color-moss-400: #43a077;
-  --color-sage-400: #6fae91;
-  --color-sage-300: #98c6ae;
-  --color-sage-200: #c3ddcf;
-  --color-sage-100: #e2efe8;
-  --color-mist-100: #eef4f0;
-  --color-mist-50: #f5f9f6;
+  /* --------------------------------------------------------------------
+     Die gesamte Palette ist am Logo ausgerichtet.
+     Markengrün #8bc53e liegt bei Farbton 86° — ein helles Gelbgrün.
+     Alle Grünstufen folgen diesem Farbton, damit das Logo nicht als
+     Fremdkörper auf der Fläche sitzt.
+     -------------------------------------------------------------------- */
 
-  /* Neutrale Achse — leicht ins Grüne gebrochen, nie kaltes Grau. */
-  --color-ink-900: #0f1512;
-  --color-ink-800: #1b2320;
-  --color-ink-700: #2c3733;
-  --color-ink-600: #46534e;
-  --color-ink-500: #64716c;
-  --color-ink-400: #8b9691;
-  --color-ink-300: #b6bfba;
-  --color-ink-200: #d9dfdc;
-  --color-ink-100: #eaeeec;
+  /* Tiefe Grüntöne für dunkle Sektionen — warm, nicht bläulich. */
+  --color-pine-950: #0d2011;
+  --color-pine-900: #142c17;
+  --color-pine-800: #1a381c;
+  --color-pine-700: #224622;
+  --color-pine-600: #2b5827;
+
+  /* Akzentgrün. moss-600 ist die dunkelste Stufe und die einzige,
+     die als Textfarbe auf hellem Grund zulässig ist (5,6:1). */
+  --color-moss-600: #487317;
+  --color-moss-500: #5c9022;
+  --color-moss-400: #74ad2e;
+
+  /* Helle Stufen. sage-400 ist exakt das Logogrün — nur als Flächen- und
+     Grafikakzent verwenden, auf Weiß erreicht es nur 2:1 und taugt nicht
+     für Text. */
+  --color-sage-400: #8bc53e;
+  --color-sage-300: #a8d46a;
+  --color-sage-200: #c6e4a1;
+  --color-sage-100: #e4f1d1;
+  --color-mist-100: #eef5e4;
+  --color-mist-50: #f6faf1;
+
+  /* Neutrale Achse — ink-900 ist das Schwarz aus der Wortmarke. */
+  --color-ink-900: #231f20;
+  --color-ink-800: #2e2a2b;
+  --color-ink-700: #403b3c;
+  --color-ink-600: #57514f;
+  --color-ink-500: #6a625e;
+  --color-ink-400: #756d68;
+  --color-ink-300: #b0a9a4;
+  --color-ink-200: #dcd8d5;
+  --color-ink-100: #eeebe9;
   --color-paper: #ffffff;
-  --color-paper-warm: #fafcfb;
+  --color-paper-warm: #fbfdf9;
 
   --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -84,7 +98,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-moss-500);
+    outline: 2px solid var(--color-moss-600);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -109,8 +123,8 @@
   /* Ruhiger Verlauf für dunkle Sektionen. */
   .surface-deep {
     background:
-      radial-gradient(120% 80% at 15% 0%, rgb(34 107 76 / 0.5) 0%, transparent 60%),
-      radial-gradient(90% 70% at 100% 100%, rgb(28 88 63 / 0.45) 0%, transparent 55%),
+      radial-gradient(120% 80% at 15% 0%, rgb(43 88 39 / 0.55) 0%, transparent 60%),
+      radial-gradient(90% 70% at 100% 100%, rgb(34 70 34 / 0.5) 0%, transparent 55%),
       var(--color-pine-900);
   }
 

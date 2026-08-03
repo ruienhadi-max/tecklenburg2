@@ -56,6 +56,35 @@ bewusst mit einem Fehler, statt Absender:innen einen Eingang vorzutäuschen.
 **Vor dem Livegang:** `site.url` in `content/site.ts` auf die Zieldomain setzen —
 davon hängen Canonicals, Sitemap und JSON-LD ab.
 
+## Logo und Farbwelt
+
+Quelle ist die einzige verfügbare Logodatei: **266 × 83 px, PNG auf weißem Grund** —
+dieselbe Fassung liegt auch auf der bestehenden Website. Sie wurde freigestellt und
+liegt in zwei Fassungen vor:
+
+| Datei | Verwendung |
+| --- | --- |
+| `public/logo.png` | Schrift in Markenschwarz — helle Flächen, Header |
+| `public/logo-invers.png` | Schrift in Weiß, Signet bleibt grün — dunkle Flächen, Footer |
+| `app/icon.png`, `app/apple-icon.png` | Signet allein (Reiher über Burgtor) |
+
+Die Anzeigebreite bleibt bewusst unter der halben Originalbreite, damit die Marke auf
+Retina-Displays scharf bleibt. **Eine Vektorfassung (SVG, EPS oder AI) beim Gestalter
+anfragen** — damit ließe sich das Logo in jeder Größe scharf ausspielen und die
+Aufbereitung in `public/` entfiele.
+
+Die Farbpalette in `app/globals.css` ist am Logo ausgerichtet:
+
+- **`#8bc53e`** (Token `sage-400`) ist exakt das Markengrün. Es hat auf Weiß nur 2:1
+  Kontrast und wird deshalb ausschließlich als Flächen- und Grafikakzent eingesetzt.
+- **`moss-600` `#487317`** ist die dunkelste Stufe desselben Farbtons und die einzige,
+  die als Textfarbe auf hellem Grund zulässig ist (5,6:1).
+- Alle Grünstufen folgen dem Farbton des Logos (86°). Die tiefen `pine`-Töne für dunkle
+  Sektionen sind bewusst warm gehalten, damit das Logo nicht als Fremdkörper wirkt.
+- **`ink-900` `#231f20`** ist das Schwarz aus der Wortmarke.
+
+Alle Text-/Hintergrund-Paare wurden gegen WCAG AA (4,5:1) geprüft.
+
 ## Bildsprache
 
 Statt Stockfotos trägt die Seite eine eigene abstrakte Visualsprache
@@ -83,3 +112,4 @@ Consent-Frage neu bewertet werden.
   Vorschläge und aktuell nirgends verlinkt — einrichten oder entfernen
 - Kennzahlen („48 h“, „24/7“, freie Plätze im Hero) fachlich bestätigen lassen
 - Impressum und Datenschutzerklärung juristisch prüfen lassen
+- Vektorfassung des Logos besorgen (aktuell nur 266 × 83 px verfügbar)

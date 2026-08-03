@@ -21,7 +21,7 @@ export function ContourField({
   className?: string;
   tone?: "light" | "dark";
 }) {
-  const stroke = tone === "dark" ? "rgb(195 221 207 / 0.16)" : "rgb(28 88 63 / 0.13)";
+  const stroke = tone === "dark" ? "rgb(198 228 161 / 0.16)" : "rgb(72 115 23 / 0.13)";
   return (
     <svg
       aria-hidden
@@ -53,10 +53,11 @@ export function AuraBlob({
   className?: string;
   tone?: "moss" | "sage" | "pine";
 }) {
+  // Farbwerte gespiegelt aus @theme in globals.css.
   const colors = {
-    moss: ["#43a077", "#226b4c"],
-    sage: ["#98c6ae", "#6fae91"],
-    pine: ["#1c583f", "#0b2d23"],
+    moss: ["#74ad2e", "#487317"],
+    sage: ["#a8d46a", "#8bc53e"],
+    pine: ["#2b5827", "#142c17"],
   } as const;
   const [from, to] = colors[tone];
   const id = `aura-${tone}`;
@@ -110,9 +111,9 @@ export function PhotoFrame({
   seed?: number;
 }) {
   const palettes = {
-    sage: ["#e2efe8", "#98c6ae", "#43a077"],
-    pine: ["#164634", "#1c583f", "#2c8460"],
-    mist: ["#f5f9f6", "#e2efe8", "#c3ddcf"],
+    sage: ["#e4f1d1", "#a8d46a", "#74ad2e"],
+    pine: ["#224622", "#2b5827", "#5c9022"],
+    mist: ["#f6faf1", "#e4f1d1", "#c6e4a1"],
   } as const;
   const [bg, mid, fg] = palettes[tone];
 

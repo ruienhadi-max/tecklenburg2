@@ -81,7 +81,7 @@ export function SiteHeader() {
       >
         <Container width="wide">
           <div className="flex h-[4.5rem] items-center justify-between gap-8">
-            <Wordmark />
+            <Wordmark priority />
 
             <nav
               aria-label="Hauptnavigation"

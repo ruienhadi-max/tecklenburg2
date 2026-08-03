@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container, Arrow } from "./ui";
-import { Mark } from "./brand";
+import { Logo } from "./brand";
 import { site } from "@/content/site";
 import { mainNav, legalNav } from "@/lib/nav";
 import { angebote } from "@/content/angebote";
@@ -58,12 +58,7 @@ export function SiteFooter() {
         {/* Informationsebene */}
         <div className="grid gap-12 py-14 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3">
-              <Mark className="h-9 w-9 text-sage-300" />
-              <span className="text-[1.02rem] font-semibold text-white">
-                Jugendhilfe Tecklenburg
-              </span>
-            </div>
+            <Logo tone="light" className="w-[152px]" />
             <p className="prose-de mt-5 max-w-xs text-[0.92rem] leading-relaxed text-sage-200/70">
               Träger der stationären Kinder- und Jugendhilfe im Kreis Steinfurt. Seit{" "}
               {site.founded} an der Seite junger Menschen — mit Haltung, Fachlichkeit

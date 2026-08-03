@@ -1,92 +1,69 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cx } from "./ui";
 
 /**
- * Wortmarke mit Signet. Das Signet kombiniert zwei Bögen: eine schützende
- * Form und ein aufstrebendes Blatt — Sicherheit und Entwicklung in einem
- * Zeichen, ohne bildhafte Kinderdarstellung.
+ * Wort-Bild-Marke der Einrichtung.
+ *
+ * Quelle ist die einzige verfügbare Logodatei (266 × 83 px). Sie wurde
+ * freigestellt und liegt in zwei Fassungen vor:
+ *   public/logo.png         — Schrift in Markenschwarz, für helle Flächen
+ *   public/logo-invers.png  — Schrift in Weiß, Signet bleibt grün, für dunkle Flächen
+ *
+ * Die Anzeigebreite bleibt bewusst unter der halben Originalbreite, damit die
+ * Marke auf Retina-Displays scharf bleibt. Sobald eine Vektorfassung vorliegt,
+ * genügt es, hier auf die SVG-Datei zu wechseln.
  */
-/** Größe wird immer von außen gesetzt, damit keine konkurrierenden
- *  Tailwind-Größenklassen im selben class-Attribut landen. */
-export function Mark({ className }: { className?: string }) {
+
+const ORIGINAL = { width: 266, height: 83 } as const;
+
+export function Logo({
+  tone = "dark",
+  className = "w-[136px] sm:w-[162px]",
+  priority = false,
+}: {
+  /** "dark" = Marke auf hellem Grund, "light" = Marke auf dunklem Grund. */
+  tone?: "dark" | "light";
+  /** Steuert die Breite; die Höhe folgt über `h-auto`. */
+  className?: string;
+  priority?: boolean;
+}) {
   return (
-    <svg
-      viewBox="0 0 40 40"
-      className={className}
-      role="img"
-      aria-label="Signet Jugendhilfe Tecklenburg"
-    >
-      <path
-        d="M20 3.5c7.2 3.1 11.5 4.2 15.5 4.4v13.2c0 7.9-6 13.4-15.5 15.9C10.5 34.5 4.5 29 4.5 21.1V7.9C8.5 7.7 12.8 6.6 20 3.5Z"
-        fill="currentColor"
-        opacity="0.12"
-      />
-      <path
-        d="M20 3.5c7.2 3.1 11.5 4.2 15.5 4.4v13.2c0 7.9-6 13.4-15.5 15.9C10.5 34.5 4.5 29 4.5 21.1V7.9C8.5 7.7 12.8 6.6 20 3.5Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M20 29.5V16.8"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-      />
-      <path
-        d="M20 17.4c0-4.2 2.6-6.9 6.6-7.6.5 4.6-1.9 7.9-6.6 7.6Z"
-        fill="currentColor"
-      />
-      <path
-        d="M20 22.2c0-3.3-2.1-5.5-5.3-6.1-.4 3.7 1.5 6.3 5.3 6.1Z"
-        fill="currentColor"
-        opacity="0.55"
-      />
-    </svg>
+    <Image
+      src={tone === "light" ? "/logo-invers.png" : "/logo.png"}
+      alt="Jugendhilfe Tecklenburg"
+      width={ORIGINAL.width}
+      height={ORIGINAL.height}
+      priority={priority}
+      unoptimized
+      className={cx("h-auto", className)}
+    />
   );
 }
 
 export function Wordmark({
   tone = "dark",
   className,
+  logoClassName,
   href = "/",
+  priority = false,
 }: {
   tone?: "dark" | "light";
   className?: string;
+  logoClassName?: string;
   href?: string;
+  priority?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className={cx("group flex items-center gap-3", className)}
+      className={cx(
+        "inline-flex shrink-0 items-center transition-opacity duration-300 hover:opacity-80",
+        className,
+      )}
       aria-label="Jugendhilfe Tecklenburg — zur Startseite"
     >
-      <Mark
-        className={cx(
-          "h-8 w-8 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 sm:h-9 sm:w-9",
-          tone === "light" ? "text-sage-200" : "text-pine-700",
-        )}
-      />
-      <span className="leading-tight">
-        <span
-          className={cx(
-            "block text-[0.95rem] font-semibold tracking-[-0.015em] whitespace-nowrap sm:text-[1.02rem]",
-            tone === "light" ? "text-white" : "text-pine-900",
-          )}
-        >
-          Jugendhilfe Tecklenburg
-        </span>
-        {/* Auf sehr schmalen Displays weggelassen — der Name trägt allein. */}
-        <span
-          className={cx(
-            "hidden text-[0.68rem] font-medium tracking-[0.12em] whitespace-nowrap uppercase sm:block",
-            tone === "light" ? "text-sage-300/80" : "text-ink-400",
-          )}
-        >
-          Hilfen zur Erziehung · SGB VIII
-        </span>
-      </span>
+      <Logo tone={tone} priority={priority} {...(logoClassName ? { className: logoClassName } : {})} />
     </Link>
   );
 }
