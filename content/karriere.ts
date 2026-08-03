@@ -137,6 +137,16 @@ export function getJob(slug: string) {
   return jobs.find((j) => j.slug === slug);
 }
 
+/**
+ * Imagefilm der Einrichtung. Wird über die Zwei-Klick-Einbettung geladen,
+ * damit ohne Interaktion keine Verbindung zu YouTube entsteht.
+ */
+export const karriereVideo = {
+  videoId: "ehkNdBB0ogQ",
+  titel: "Wir stellen uns vor! Wir sind die Jugendhilfe Tecklenburg!",
+  standbild: "karrierevideo-standbild",
+};
+
 /** Argumente für die Arbeitgebermarke — konkret statt Floskel. */
 export const benefits = [
   {

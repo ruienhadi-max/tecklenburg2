@@ -14,9 +14,10 @@ export const metadata = {
 };
 
 /**
- * Diese Erklärung bildet den tatsächlichen Stand dieser Website ab:
- * keine Cookies, keine Analyse-Tools, keine externen Einbindungen.
- * Wird ein solcher Dienst später ergänzt, muss dieser Text erweitert werden.
+ * Diese Erklärung bildet den tatsächlichen Stand dieser Website ab: keine
+ * Cookies, keine Analyse-Tools und als einzige externe Einbindung das
+ * YouTube-Video im Karrierebereich, das erst auf Klick lädt.
+ * Wird ein weiterer Dienst ergänzt, muss dieser Text erweitert werden.
  */
 const sections = [
   {
@@ -29,7 +30,8 @@ const sections = [
   {
     title: "2. Grundsatz der Datensparsamkeit",
     paragraphs: [
-      "Diese Website setzt keine Cookies, bindet keine externen Schriftarten, Karten, Videos oder Social-Media-Dienste ein und verwendet keine Analyse- oder Tracking-Werkzeuge. Es findet kein Profiling und keine automatisierte Entscheidungsfindung statt.",
+      "Diese Website setzt keine Cookies, bindet keine externen Schriftarten, Karten oder Social-Media-Dienste ein und verwendet keine Analyse- oder Tracking-Werkzeuge. Es findet kein Profiling und keine automatisierte Entscheidungsfindung statt.",
+      "Die einzige Ausnahme ist das Video im Karrierebereich. Es wird erst geladen, wenn Sie es ausdrücklich starten — siehe Abschnitt 6.",
     ],
   },
   {
@@ -56,13 +58,23 @@ const sections = [
     ],
   },
   {
-    title: "6. Hosting",
+    title: "6. Video im Karrierebereich (YouTube)",
+    paragraphs: [
+      "Im Karrierebereich ist ein Video eingebunden, das bei YouTube gespeichert ist. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.",
+      "Wir setzen dafür eine Zwei-Klick-Lösung ein: Solange Sie das Video nicht starten, wird keinerlei Verbindung zu YouTube aufgebaut. Angezeigt wird lediglich ein Standbild, das auf unserem eigenen Server liegt.",
+      "Erst wenn Sie auf die Wiedergabe klicken, wird das Video von youtube-nocookie.com nachgeladen. Dabei erfährt YouTube Ihre IP-Adresse sowie technische Informationen zu Browser und Gerät; es können Cookies und ähnliche Technologien eingesetzt werden. Sind Sie zugleich bei Google angemeldet, kann der Aufruf Ihrem Konto zugeordnet werden.",
+      "Rechtsgrundlage ist Ihre durch den Klick erteilte Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO in Verbindung mit § 25 Abs. 1 TDDDG. Die Einwilligung gilt nur für die jeweilige Wiedergabe; laden Sie die Seite neu, ist das Video wieder inaktiv.",
+      "Eine Übermittlung in die USA ist nicht ausgeschlossen. Google beruft sich hierfür auf das EU-US Data Privacy Framework. Einzelheiten zur Verarbeitung finden Sie unter policies.google.com/privacy.",
+    ],
+  },
+  {
+    title: "7. Hosting",
     paragraphs: [
       "Diese Website wird bei einem Dienstleister innerhalb der Europäischen Union gehostet. Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO.",
     ],
   },
   {
-    title: "7. Ihre Rechte",
+    title: "8. Ihre Rechte",
     paragraphs: [
       "Sie haben jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO) und Datenübertragbarkeit (Art. 20 DSGVO).",
       "Sie können einer Verarbeitung, die auf Art. 6 Abs. 1 lit. f DSGVO beruht, aus Gründen Ihrer besonderen Situation widersprechen (Art. 21 DSGVO). Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.",
@@ -70,13 +82,13 @@ const sections = [
     ],
   },
   {
-    title: "8. SSL-/TLS-Verschlüsselung",
+    title: "9. SSL-/TLS-Verschlüsselung",
     paragraphs: [
       "Diese Website nutzt aus Sicherheitsgründen eine TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie an „https://“ in der Adresszeile Ihres Browsers.",
     ],
   },
   {
-    title: "9. Änderungen dieser Erklärung",
+    title: "10. Änderungen dieser Erklärung",
     paragraphs: [
       "Wir passen diese Datenschutzerklärung an, sobald Änderungen der Website oder der Rechtslage dies erforderlich machen. Es gilt jeweils die auf dieser Seite veröffentlichte Fassung.",
     ],
@@ -89,7 +101,7 @@ export default function DatenschutzPage() {
       <PageHero
         eyebrow="Rechtliches"
         title="Datenschutzerklärung"
-        lead="Informationen zur Verarbeitung personenbezogener Daten gemäß Art. 13 DSGVO. Diese Website kommt ohne Cookies, ohne Tracking und ohne externe Einbindungen aus."
+        lead="Informationen zur Verarbeitung personenbezogener Daten gemäß Art. 13 DSGVO. Diese Website kommt ohne Cookies und ohne Tracking aus. Das Video im Karrierebereich lädt erst, wenn Sie es starten."
         crumbs={[
           { name: "Start", path: "/" },
           { name: "Datenschutz", path: "/datenschutz" },

@@ -11,8 +11,15 @@ import {
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { PhotoFrame } from "@/components/visuals";
+import { VideoEinbettung } from "@/components/video-einbettung";
 import { JsonLd, breadcrumbLd, jobPostingLd } from "@/lib/jsonld";
-import { jobs, benefits, arbeitsalltag, bewerbungsprozess } from "@/content/karriere";
+import {
+  jobs,
+  benefits,
+  arbeitsalltag,
+  bewerbungsprozess,
+  karriereVideo,
+} from "@/content/karriere";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -74,6 +81,28 @@ export default function KarrierePage() {
           />
         }
       />
+
+      {/* Imagefilm */}
+      <Section tone="soft" size="compact">
+        <Container width="wide">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <Reveal className="lg:col-span-5">
+              <SectionHeader
+                eyebrow="Lernen Sie uns kennen"
+                title="Vier Minuten, die mehr sagen als eine Stellenanzeige."
+                lead="Kolleg:innen erzählen, warum sie hier arbeiten, was der Alltag von ihnen verlangt und was ihn trägt. Ohne Skript."
+              />
+            </Reveal>
+            <Reveal delay={120} className="lg:col-span-7">
+              <VideoEinbettung
+                videoId={karriereVideo.videoId}
+                titel={karriereVideo.titel}
+                standbild={karriereVideo.standbild}
+              />
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
 
       {/* Warum hier */}
       <Section>

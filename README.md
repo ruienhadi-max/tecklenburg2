@@ -113,11 +113,30 @@ Ohne `bild` erscheint die abstrakte Ersatzgrafik, und `caption` dient dann als
 Regieanweisung für ein späteres Shooting. Personen erhalten `<Portrait person={…} />`;
 fehlt ein Foto, greifen automatisch die Initialen.
 
+## Video im Karrierebereich
+
+Der Imagefilm liegt bei YouTube und ist über `components/video-einbettung.tsx`
+nach dem **Zwei-Klick-Prinzip** eingebunden:
+
+- Vor dem Klick lädt die Seite nichts von Google. Sichtbar ist nur ein Standbild,
+  das lokal unter `public/bilder/karrierevideo-standbild.webp` liegt.
+- Erst beim Start wird der iframe von `youtube-nocookie.com` eingehängt.
+- Video-ID, Titel und Standbild stehen in `content/karriere.ts` unter `karriereVideo`.
+
+Das ist kein Detail, sondern die Bedingung dafür, dass die Seite ohne
+Consent-Banner auskommt: Ein direkt eingebundener YouTube-Player würde beim
+Seitenaufruf Verbindungen zu Google herstellen und wäre einwilligungspflichtig.
+
+Die lokale Datei `Imagefilm_Tecklenburg_Version2.mp4` (1,4 GB) eignet sich nicht
+zum Selbsthosten. Falls das später gewünscht ist, bräuchte es eine transkodierte
+Web-Fassung — dann entfiele der externe Dienst vollständig.
+
 ## Datenschutz
 
 Die Seite lädt keine externen Ressourcen: keine Cookies, keine Google Fonts, keine
-Kartendienste, kein Tracking. Deshalb ist kein Consent-Banner nötig. Wird später ein
-externer Dienst eingebunden, müssen `app/datenschutz/page.tsx` und die
+Kartendienste, kein Tracking. Einzige Ausnahme ist das Karriere-Video, das erst auf
+Klick lädt (siehe oben). Deshalb ist kein Consent-Banner nötig. Wird später ein
+weiterer externer Dienst eingebunden, müssen `app/datenschutz/page.tsx` und die
 Consent-Frage neu bewertet werden.
 
 ## Offene Punkte vor dem Livegang
