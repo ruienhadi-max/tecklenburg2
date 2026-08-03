@@ -1,9 +1,10 @@
 import { Container, Section, SectionHeader, ButtonLink, Card } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
+import { Portrait, PersonCard } from "@/components/person";
 import { PhotoFrame } from "@/components/visuals";
 import { JsonLd, breadcrumbLd } from "@/lib/jsonld";
-import { leadership, teamComposition, site } from "@/content/site";
+import { leadership, team, teamComposition, site } from "@/content/site";
 import { werte } from "@/content/konzept";
 import { pageMetadata } from "@/lib/seo";
 
@@ -46,9 +47,9 @@ export default function TeamPage() {
         aside={
           <PhotoFrame
             ratio="landscape"
-            tone="sage"
-            seed={7}
-            caption="Bildplatz: Team im Gespräch — natürliche Situation, gedecktes Licht, keine gestellte Aufstellung."
+            bild="team-vor-dem-haus"
+            alt="Das gesamte Team der Jugendhilfe Tecklenburg vor der Verwaltung in Ibbenbüren"
+            priority
             className="shadow-[var(--shadow-lift)]"
           />
         }
@@ -70,9 +71,7 @@ export default function TeamPage() {
               <Reveal key={p.slug} delay={i * 80}>
                 <Card className="flex h-full flex-col">
                   <div className="flex items-start gap-5">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-mist-100 text-[1.05rem] font-semibold text-pine-700">
-                      {p.initials}
-                    </div>
+                    <Portrait person={p} size={72} />
                     <div>
                       <h3 className="text-[1.3rem] leading-tight font-semibold text-pine-900">
                         {p.name}
@@ -85,9 +84,9 @@ export default function TeamPage() {
                     </div>
                   </div>
 
-                  {p.quote ? (
+                  {p.zitatEntwurf ? (
                     <blockquote className="prose-de mt-7 border-l-2 border-sage-300 pl-5 text-[1rem] leading-relaxed text-ink-700">
-                      „{p.quote}“
+                      „{p.zitatEntwurf}“
                     </blockquote>
                   ) : null}
 
@@ -113,8 +112,32 @@ export default function TeamPage() {
         </Container>
       </Section>
 
-      {/* Zusammensetzung */}
+      {/* Das ganze Team */}
       <Section>
+        <Container width="wide">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Kolleg:innen"
+              title="Die Gesichter hinter der Arbeit."
+              lead="Feste Bezugspersonen statt wechselnder Zuständigkeiten — deshalb zeigen wir, wer hier tatsächlich arbeitet."
+            />
+          </Reveal>
+
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {/* Ohne die Leitung — die steht bereits im Abschnitt darüber. */}
+            {team
+              .filter((p) => !p.leitung)
+              .map((p, i) => (
+                <Reveal key={p.slug} delay={(i % 4) * 70}>
+                  <PersonCard person={p} />
+                </Reveal>
+              ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Zusammensetzung */}
+      <Section tone="soft">
         <Container width="wide">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-5">

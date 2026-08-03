@@ -68,9 +68,9 @@ export default function KarrierePage() {
         aside={
           <PhotoFrame
             ratio="landscape"
-            tone="pine"
-            seed={8}
-            caption="Bildplatz: Kolleg:innen bei der Übergabe — echte Arbeitssituation, kein Gruppenfoto."
+            bild="besprechung"
+            alt="Kolleg:innen der Jugendhilfe Tecklenburg in der Teambesprechung"
+            priority
           />
         }
       />
@@ -118,9 +118,8 @@ export default function KarrierePage() {
               <Reveal delay={140}>
                 <PhotoFrame
                   ratio="landscape"
-                  tone="mist"
-                  seed={9}
-                  caption="Bildplatz: Küche am Abend — gemeinsames Kochen als typische Alltagssituation."
+                  bild="bueroalltag"
+                  alt="Arbeitsalltag im Büro der Jugendhilfe Tecklenburg"
                   className="mt-12 hidden lg:block"
                 />
               </Reveal>

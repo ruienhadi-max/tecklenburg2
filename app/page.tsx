@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container, Section, SectionHeader, ButtonLink, TextLink, Tag, Arrow, Check } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
+import { Portrait } from "@/components/person";
 import { ContourField, AuraBlob, PhotoFrame } from "@/components/visuals";
 import { angebote } from "@/content/angebote";
 import { prinzipien, haltung } from "@/content/konzept";
@@ -113,9 +114,9 @@ export default function HomePage() {
               <div className="relative">
                 <PhotoFrame
                   ratio="portrait"
-                  tone="sage"
-                  seed={2}
-                  caption="Bildplatz: Gemeinschaftsraum der Wohngruppe am Nachmittag — Alltagssituation, keine gestellte Szene."
+                  bild="gespraech-leitung"
+                  alt="Zwei Mitarbeitende der Jugendhilfe Tecklenburg im Gespräch am Besprechungstisch"
+                  priority
                   className="shadow-[var(--shadow-lift)]"
                 />
                 {/* Eingeschobene Karte bricht das Bild auf und trägt eine Aussage.
@@ -197,9 +198,8 @@ export default function HomePage() {
               <Reveal delay={180}>
                 <PhotoFrame
                   ratio="landscape"
-                  tone="mist"
-                  seed={4}
-                  caption="Bildplatz: Ruhiger Rückzugsort im Haus — Licht, Holz, keine Menschen im Bild."
+                  bild="kollegiale-beratung"
+                  alt="Kollegiale Fallberatung im Sitzkreis"
                   className="mt-12 hidden lg:block"
                 />
               </Reveal>
@@ -376,9 +376,8 @@ export default function HomePage() {
             <Reveal className="lg:col-span-5">
               <PhotoFrame
                 ratio="landscape"
-                tone="pine"
-                seed={6}
-                caption="Bildplatz: Teambesprechung — echte Arbeitssituation, konzentriert, unposiert."
+                bild="team-terrasse"
+                alt="Das Team der Jugendhilfe Tecklenburg vor dem Haus in Ibbenbüren"
                 className="shadow-[var(--shadow-lift)]"
               />
             </Reveal>
@@ -396,12 +395,10 @@ export default function HomePage() {
                 {leadership.slice(0, 2).map((p, i) => (
                   <Reveal key={p.slug} delay={i * 100}>
                     <figure className="grid grid-cols-[auto_1fr] gap-6">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-mist-100 text-[0.95rem] font-semibold text-pine-700">
-                        {p.initials}
-                      </div>
+                      <Portrait person={p} size={64} />
                       <div>
                         <blockquote className="prose-de text-[1.05rem] leading-relaxed text-ink-700">
-                          „{p.quote}“
+                          „{p.zitatEntwurf}“
                         </blockquote>
                         <figcaption className="mt-3 text-[0.88rem] text-ink-500">
                           <span className="font-medium text-pine-800">{p.name}</span> ·{" "}

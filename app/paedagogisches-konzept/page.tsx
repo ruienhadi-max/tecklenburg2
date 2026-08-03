@@ -144,9 +144,8 @@ export default function KonzeptPage() {
               <Reveal delay={140}>
                 <PhotoFrame
                   ratio="landscape"
-                  tone="mist"
-                  seed={5}
-                  caption="Bildplatz: Detail aus dem Alltag — Hände am Küchentisch, gedeckte Farben."
+                  bild="fachliche-arbeit"
+                  alt="Zwei Fachkräfte bei der Fallarbeit am Besprechungstisch"
                   className="mt-12"
                 />
               </Reveal>

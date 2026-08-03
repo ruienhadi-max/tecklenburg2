@@ -1,6 +1,7 @@
 import { Container, Section, SectionHeader, ButtonLink, Card } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
+import { Portrait } from "@/components/person";
 import { JsonLd, breadcrumbLd } from "@/lib/jsonld";
 import { site, leadership } from "@/content/site";
 import { angebote } from "@/content/angebote";
@@ -166,9 +167,7 @@ export default function KontaktPage() {
             {leadership.map((p, i) => (
               <Reveal key={p.slug} delay={i * 70}>
                 <Card tone="soft" className="flex h-full flex-col !p-7">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[0.9rem] font-semibold text-pine-700">
-                    {p.initials}
-                  </div>
+                  <Portrait person={p} size={64} />
                   <h3 className="mt-5 text-[1.1rem] leading-tight font-semibold text-pine-900">
                     {p.name}
                   </h3>

@@ -85,15 +85,33 @@ Die Farbpalette in `app/globals.css` ist am Logo ausgerichtet:
 
 Alle Text-/Hintergrund-Paare wurden gegen WCAG AA (4,5:1) geprüft.
 
-## Bildsprache
+## Bilder
 
-Statt Stockfotos trägt die Seite eine eigene abstrakte Visualsprache
-(`components/visuals.tsx`): Höhenlinien und geschichtete Horizonte, angelehnt an die
-Landschaft des Tecklenburger Landes.
+Die Fotos stammen aus dem Shooting der Einrichtung (~430 Aufnahmen, Originale
+bei ~19 MB je Datei). Die Originale liegen **außerhalb** des Repositories; im
+Projekt liegen nur die zugeschnittenen, komprimierten Fassungen unter
+`public/bilder/` — je Motiv als WebP in einfacher und doppelter Auflösung
+(zusammen rund 3 MB).
 
-`<PhotoFrame>` markiert jede Stelle, an der später ein echtes Foto steht. Das Attribut
-`caption` beschreibt das vorgesehene Motiv und dient zugleich als Regieanweisung fürs
-Shooting. Sobald Bilder vorliegen: `src` und `alt` ergänzen — das Layout bleibt gleich.
+Erzeugt werden sie von `bilder-import.mjs`. Dort stehen Auswahl, Zielformat und
+Bildausschnitt an einer Stelle:
+
+```bash
+node bilder-import.mjs
+```
+
+Der Pfad zu den Originalen steht oben im Skript. Drei Zielformate sind definiert:
+`portraet` (4:5), `quer` (16:10) und `kopf` (1:1 für Personen).
+
+**Personenporträts:** Die Serie ist durchgehend gleich gerahmt — der Kopf sitzt bei
+rund 42 % der Bildbreite, nicht mittig. Ein zentrierter Zuschnitt verfehlt ihn,
+automatische Verfahren (`attention`) fallen auf das helle Fenster herein. Die
+Ausschnitte sind deshalb über abgelesene Werte gesetzt (`kopfY` je Person).
+
+Im Layout werden Bilder über `<PhotoFrame bild="dateiname" alt="…" />` eingesetzt.
+Ohne `bild` erscheint die abstrakte Ersatzgrafik, und `caption` dient dann als
+Regieanweisung für ein späteres Shooting. Personen erhalten `<Portrait person={…} />`;
+fehlt ein Foto, greifen automatisch die Initialen.
 
 ## Datenschutz
 
@@ -113,3 +131,12 @@ Consent-Frage neu bewertet werden.
 - Kennzahlen („48 h“, „24/7“, freie Plätze im Hero) fachlich bestätigen lassen
 - Impressum und Datenschutzerklärung juristisch prüfen lassen
 - Vektorfassung des Logos besorgen (aktuell nur 266 × 83 px verfügbar)
+- **Zitate freigeben lassen:** Die Felder `zitatEntwurf` in `content/site.ts` sind
+  Entwürfe der Agentur, keine Aussagen der genannten Personen. Neben echten
+  Porträts wirken sie wie belegte Zitate — vor dem Livegang bestätigen,
+  ersetzen oder entfernen.
+- Rollen ergänzen: Für Mandy Rautenberg, Udo Krämer, Mathis Petersen und Stephan
+  Bogdanow lagen keine Funktionsbezeichnungen vor; sie sind deshalb noch nicht
+  auf der Teamseite. Porträts sind vorhanden.
+- Eva Poelmeyer hat kein Foto aus dem Shooting — sie wird mit Initialen dargestellt.
+- Einverständnis der abgebildeten Mitarbeitenden zur Veröffentlichung prüfen

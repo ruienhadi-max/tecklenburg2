@@ -76,22 +76,35 @@ export type Person = {
   phone?: string;
   phoneDisplay?: string;
   email?: string;
-  /** Kurzes Zitat — gibt dem Team eine Haltung statt einer Liste. */
-  quote?: string;
+  /**
+   * ACHTUNG — noch nicht freigegeben.
+   *
+   * Diese Zitate sind Entwürfe der Agentur, keine Aussagen der genannten
+   * Personen. Vor dem Livegang müssen sie von den Zitierten bestätigt,
+   * ersetzt oder entfernt werden. Der Feldname sagt das bewusst deutlich,
+   * damit sie in einem CMS nicht versehentlich als echte Zitate gelten.
+   */
+  zitatEntwurf?: string;
+  /** Dateiname in public/bilder ohne Endung. Fehlt er, greifen die Initialen. */
+  foto?: string;
   initials: string;
+  /** Leitung erscheint prominenter und mit Direktkontakt. */
+  leitung?: boolean;
 };
 
-export const leadership: Person[] = [
+export const team: Person[] = [
   {
     slug: "ingo-heming",
     name: "Ingo Heming",
     role: "Geschäftsführung",
-    qualification: "Gründer der Einrichtung",
+    qualification: "Gründer und Inhaber",
     focus: "Trägerentwicklung, Qualitätssicherung, Betriebserlaubnisrecht",
     since: "2009",
     email: "info@jugendhilfe-tecklenburg.de",
+    foto: "ingo-heming",
     initials: "IH",
-    quote:
+    leitung: true,
+    zitatEntwurf:
       "Wir haben 2009 klein angefangen — mit der Überzeugung, dass junge Menschen nicht in Konzepte passen müssen, sondern Konzepte zu jungen Menschen.",
   },
   {
@@ -103,20 +116,24 @@ export const leadership: Person[] = [
     phone: "+49 5451 5419750",
     phoneDisplay: "+49 5451 541 97 50",
     email: "info@jugendhilfe-tecklenburg.de",
+    foto: "thomas-bernholt",
     initials: "TB",
-    quote:
+    leitung: true,
+    zitatEntwurf:
       "Ein Jugendamt muss wissen, woran es bei uns ist. Deshalb sagen wir früh und klar, ob wir einem jungen Menschen gerecht werden können — auch wenn die Antwort Nein lautet.",
   },
   {
     slug: "dorothee-ludwig",
     name: "Dorothee Ludwig",
-    role: "Bereichsleitung Stationäre Hilfen",
-    qualification: "Pädagogische Fachkraft",
+    role: "Pädagogische Leitung",
+    qualification: "Sozialarbeiterin",
     focus: "Intensivwohngruppe, Betreute Wohnformen, Verselbstständigung",
     phone: "+49 151 20749582",
     phoneDisplay: "+49 151 207 495 82",
+    foto: "dorothee-ludwig",
     initials: "DL",
-    quote:
+    leitung: true,
+    zitatEntwurf:
       "Beziehung ist keine Methode, die man anwendet. Sie ist die Bedingung dafür, dass alle anderen Methoden überhaupt wirken.",
   },
   {
@@ -128,10 +145,68 @@ export const leadership: Person[] = [
     phone: "+49 5451 5496266",
     phoneDisplay: "+49 5451 549 62 66",
     initials: "EP",
-    quote:
+    leitung: true,
+    zitatEntwurf:
       "Manche junge Menschen brauchen erst Abstand vom Bekannten, um sich selbst wieder in den Blick zu bekommen.",
   },
+  {
+    slug: "malin-schmitz",
+    name: "Malin Schmitz",
+    role: "Fachbereichsleitung",
+    qualification: "Erzieherin",
+    focus: "Fachliche Steuerung im Gruppendienst",
+    foto: "malin-schmitz",
+    initials: "MS",
+  },
+  {
+    slug: "linda-hoevel",
+    name: "Linda Hövel",
+    role: "Sozialarbeiterin",
+    qualification: "Sozialarbeiterin",
+    focus: "Fallverantwortung, Hilfeplanung, Elternarbeit",
+    foto: "linda-hoevel",
+    initials: "LH",
+  },
+  {
+    slug: "marlene-gerighausen",
+    name: "Marlene Gerighausen",
+    role: "Pädagogische Fachkraft",
+    qualification: "Pädagogische Fachkraft",
+    focus: "Bezugsbetreuung im Gruppenalltag",
+    foto: "marlene-gerighausen",
+    initials: "MG",
+  },
+  {
+    slug: "johannes-boesling",
+    name: "Johannes Bösling",
+    role: "Erzieher",
+    qualification: "Erzieher",
+    focus: "Alltagsbegleitung, Schule und Freizeit",
+    foto: "johannes-boesling",
+    initials: "JB",
+  },
+  {
+    slug: "stephan-keuter",
+    name: "Stephan Keuter",
+    role: "Erzieher",
+    qualification: "Erzieher",
+    focus: "Bezugsbetreuung, Krisenbegleitung",
+    foto: "stephan-keuter",
+    initials: "SK",
+  },
+  {
+    slug: "sonia-gorny",
+    name: "Sonia Gorny",
+    role: "Verwaltung",
+    qualification: "Verwaltung",
+    focus: "Erreichbarkeit, Dokumentation, Schnittstelle zum Jugendamt",
+    foto: "sonia-gorny",
+    initials: "SG",
+  },
 ];
+
+/** Leitungskreis — für Startseite, Kontaktseite und den Jugendamtsbereich. */
+export const leadership: Person[] = team.filter((p) => p.leitung);
 
 /** Zusammensetzung des multiprofessionellen Teams — bewusst als Struktur, nicht als Namensliste. */
 export const teamComposition = [

@@ -46,9 +46,9 @@ export default function UeberUnsPage() {
         aside={
           <PhotoFrame
             ratio="portrait"
-            tone="sage"
-            seed={3}
-            caption="Bildplatz: Außenansicht des Hauses im Grünen — Tageslicht, ruhige Perspektive."
+            bild="team-terrasse-hoch"
+            alt="Das Team der Jugendhilfe Tecklenburg vor dem Haus in Ibbenbüren"
+            priority
             className="shadow-[var(--shadow-lift)]"
           />
         }

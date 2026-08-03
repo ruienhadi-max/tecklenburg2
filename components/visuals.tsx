@@ -96,16 +96,23 @@ const frameRatios = {
 export function PhotoFrame({
   ratio = "landscape",
   caption,
-  src,
+  bild,
   alt,
+  priority = false,
   tone = "sage",
   className,
   seed = 1,
 }: {
   ratio?: keyof typeof frameRatios;
   caption?: string;
-  src?: string;
+  /**
+   * Dateiname in public/bilder ohne Endung. Die zugehörige @2x-Fassung wird
+   * automatisch als srcSet ergänzt. Fehlt der Wert, erscheint die abstrakte
+   * Ersatzgrafik mit `caption` als Regieanweisung fürs Shooting.
+   */
+  bild?: string;
   alt?: string;
+  priority?: boolean;
   tone?: "sage" | "pine" | "mist";
   className?: string;
   seed?: number;
@@ -125,13 +132,18 @@ export function PhotoFrame({
         className,
       )}
     >
-      {src ? (
+      {bild ? (
+        // Bewusst ohne next/image: Die Dateien liegen bereits in genau der
+        // benötigten Größe und als WebP vor, eine zweite Optimierung brächte
+        // nichts und würde nur Serverarbeit kosten.
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={src}
-          alt={alt ?? caption ?? ""}
+          src={`/bilder/${bild}.webp`}
+          srcSet={`/bilder/${bild}.webp 1x, /bilder/${bild}@2x.webp 2x`}
+          alt={alt ?? ""}
           className="h-full w-full object-cover"
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
           decoding="async"
         />
       ) : (
