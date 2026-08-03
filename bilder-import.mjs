@@ -34,6 +34,10 @@ const bilder = [
   { q: "Johannes Boesling ErzieherDSC02784.jpg", z: "johannes-boesling", f: "kopf", pos: "centre", kopfY: 0.18 },
   { q: "Stephan Keuter ErzieherDSC02628.jpg", z: "stephan-keuter", f: "kopf", pos: "centre", kopfY: 0.25 },
   { q: "Sonia Gorny VerwaltungDSC02803.jpg", z: "sonia-gorny", f: "kopf", pos: "centre", kopfY: 0.23 },
+  { q: "Mandy RautenbergDSC02669.jpg", z: "mandy-rautenberg", f: "kopf", pos: "centre", kopfY: 0.3 },
+  { q: "Udo KraemerDSC02750.jpg", z: "udo-kraemer", f: "kopf", pos: "centre", kopfY: 0.17 },
+  { q: "Mathis PetersenDSC02766.jpg", z: "mathis-petersen", f: "kopf", pos: "centre", kopfX: 0.4, kopfY: 0.22 },
+  { q: "Stephan BogdanowDSC02646.jpg", z: "stephan-bogdanow", f: "kopf", pos: "centre", kopfY: 0.19 },
 
   // --- Szenen -----------------------------------------------------------
   // Zwei Kolleg:innen im Gespräch am Besprechungstisch

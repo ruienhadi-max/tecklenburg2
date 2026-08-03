@@ -56,10 +56,25 @@ export function PersonCard({ person }: { person: Person }) {
       <h3 className="mt-5 text-[1.08rem] leading-tight font-semibold text-pine-900">
         {person.name}
       </h3>
-      <p className="mt-1.5 text-[0.9rem] text-moss-600">{person.role}</p>
-      <p className="mt-2 flex-1 text-[0.85rem] leading-relaxed text-ink-500">
-        {person.focus}
-      </p>
+      {person.rolleOffen ? (
+        // Sichtbar als Platzhalter gekennzeichnet, damit die fehlende
+        // Funktionsbezeichnung nicht unbemerkt live geht.
+        <p
+          className="mt-1.5 text-[0.9rem] text-ink-400 italic"
+          title="Platzhalter — Funktionsbezeichnung liegt noch nicht vor"
+        >
+          {person.role}
+        </p>
+      ) : (
+        <p className="mt-1.5 text-[0.9rem] text-moss-600">{person.role}</p>
+      )}
+      {person.focus ? (
+        <p className="mt-2 flex-1 text-[0.85rem] leading-relaxed text-ink-500">
+          {person.focus}
+        </p>
+      ) : (
+        <div className="flex-1" />
+      )}
       {person.phoneDisplay ? (
         <a
           href={`tel:${person.phone?.replace(/\s/g, "")}`}

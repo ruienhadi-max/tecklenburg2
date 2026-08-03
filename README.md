@@ -135,9 +135,11 @@ Consent-Frage neu bewertet werden.
   Entwürfe der Agentur, keine Aussagen der genannten Personen. Neben echten
   Porträts wirken sie wie belegte Zitate — vor dem Livegang bestätigen,
   ersetzen oder entfernen.
-- Rollen ergänzen: Für Mandy Rautenberg, Udo Krämer, Mathis Petersen und Stephan
-  Bogdanow lagen keine Funktionsbezeichnungen vor; sie sind deshalb noch nicht
-  auf der Teamseite. Porträts sind vorhanden.
+- **Funktionsbezeichnungen ergänzen:** Mandy Rautenberg, Udo Krämer, Mathis Petersen
+  und Stephan Bogdanow stehen mit dem Platzhalter „Funktion folgt“ auf der Teamseite.
+  Die Einträge tragen `rolleOffen: true` in `content/site.ts` und werden grau-kursiv
+  statt grün dargestellt. Echte Bezeichnung eintragen, Flag entfernen — passend dazu
+  ein Satz unter `focus`.
 - Eva Poelmeyer hat kein Foto aus dem Shooting — sie wird mit Initialen dargestellt.
 
 Das Einverständnis der abgebildeten Mitarbeitenden zur Veröffentlichung liegt vor

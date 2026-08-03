@@ -90,6 +90,11 @@ export type Person = {
   initials: string;
   /** Leitung erscheint prominenter und mit Direktkontakt. */
   leitung?: boolean;
+  /**
+   * Funktionsbezeichnung ist noch ein Platzhalter. Die Teamseite kennzeichnet
+   * diese Einträge sichtbar, damit sie nicht unbemerkt live gehen.
+   */
+  rolleOffen?: boolean;
 };
 
 export const team: Person[] = [
@@ -202,6 +207,49 @@ export const team: Person[] = [
     focus: "Erreichbarkeit, Dokumentation, Schnittstelle zum Jugendamt",
     foto: "sonia-gorny",
     initials: "SG",
+  },
+
+  // Für die folgenden vier Personen lag keine Funktionsbezeichnung vor.
+  // `rolleOffen` markiert das — vor dem Livegang ersetzen.
+  {
+    slug: "mandy-rautenberg",
+    name: "Mandy Rautenberg",
+    role: "Funktion folgt",
+    qualification: "",
+    focus: "",
+    foto: "mandy-rautenberg",
+    initials: "MR",
+    rolleOffen: true,
+  },
+  {
+    slug: "udo-kraemer",
+    name: "Udo Krämer",
+    role: "Funktion folgt",
+    qualification: "",
+    focus: "",
+    foto: "udo-kraemer",
+    initials: "UK",
+    rolleOffen: true,
+  },
+  {
+    slug: "mathis-petersen",
+    name: "Mathis Petersen",
+    role: "Funktion folgt",
+    qualification: "",
+    focus: "",
+    foto: "mathis-petersen",
+    initials: "MP",
+    rolleOffen: true,
+  },
+  {
+    slug: "stephan-bogdanow",
+    name: "Stephan Bogdanow",
+    role: "Funktion folgt",
+    qualification: "",
+    focus: "",
+    foto: "stephan-bogdanow",
+    initials: "SB",
+    rolleOffen: true,
   },
 ];
 
