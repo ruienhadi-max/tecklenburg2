@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design-System — Jugendhilfe Tecklenburg
+   Grün als Primärfarbe, Weiß als Träger. Ruhig, erwachsen, hochwertig.
+   Keine Signalfarben, keine Kinderfarben.
+   ========================================================================== */
+
+@theme {
+  /* Grüntöne: von tiefem Nadelgrün bis zu fast weißem Dunst. */
+  --color-pine-950: #06211a;
+  --color-pine-900: #0b2d23;
+  --color-pine-800: #10382b;
+  --color-pine-700: #164634;
+  --color-pine-600: #1c583f;
+  --color-moss-600: #226b4c;
+  --color-moss-500: #2c8460;
+  --color-moss-400: #43a077;
+  --color-sage-400: #6fae91;
+  --color-sage-300: #98c6ae;
+  --color-sage-200: #c3ddcf;
+  --color-sage-100: #e2efe8;
+  --color-mist-100: #eef4f0;
+  --color-mist-50: #f5f9f6;
+
+  /* Neutrale Achse — leicht ins Grüne gebrochen, nie kaltes Grau. */
+  --color-ink-900: #0f1512;
+  --color-ink-800: #1b2320;
+  --color-ink-700: #2c3733;
+  --color-ink-600: #46534e;
+  --color-ink-500: #64716c;
+  --color-ink-400: #8b9691;
+  --color-ink-300: #b6bfba;
+  --color-ink-200: #d9dfdc;
+  --color-ink-100: #eaeeec;
+  --color-paper: #ffffff;
+  --color-paper-warm: #fafcfb;
+
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Großzügige, ruhige Radien im Apple-Duktus. */
+  --radius-xl2: 1.25rem;
+  --radius-xl3: 1.75rem;
+  --radius-xl4: 2.5rem;
+
+  --shadow-soft: 0 1px 2px rgb(15 21 18 / 0.04), 0 8px 24px -12px rgb(15 21 18 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(15 21 18 / 0.04), 0 24px 48px -24px rgb(15 21 18 / 0.24);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky Header darf Ankerziele nicht verdecken. */
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink-800);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "calt";
+  }
+
+  /* Optische Feinjustierung großer Headlines — enger, ruhiger, teurer. */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    color: var(--color-ink-900);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-sage-200);
+    color: var(--color-pine-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-moss-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Deutsche Trennregeln für lange Fachbegriffe im Fließtext. */
+  .prose-de {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+}
+
+@layer components {
+  /* Feine Rahmen statt harter Linien — der Grundton der gesamten Oberfläche. */
+  .hairline {
+    box-shadow: inset 0 0 0 1px rgb(15 21 18 / 0.07);
+  }
+
+  .hairline-invert {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  }
+
+  /* Ruhiger Verlauf für dunkle Sektionen. */
+  .surface-deep {
+    background:
+      radial-gradient(120% 80% at 15% 0%, rgb(34 107 76 / 0.5) 0%, transparent 60%),
+      radial-gradient(90% 70% at 100% 100%, rgb(28 88 63 / 0.45) 0%, transparent 55%),
+      var(--color-pine-900);
+  }
+
+  .surface-soft {
+    background:
+      radial-gradient(100% 70% at 80% 0%, var(--color-mist-100) 0%, transparent 65%),
+      var(--color-paper-warm);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-Reveal — sehr zurückhaltend. Bewegung soll man spüren, nicht sehen.
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.9s var(--ease-out-soft),
+    transform 0.9s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Feiner Textur-Layer gegen den „flachen Template“-Eindruck. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
