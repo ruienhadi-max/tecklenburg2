@@ -3,6 +3,7 @@ import { Container, Section, Card, CheckList } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { FallanfrageForm } from "@/components/fallanfrage-form";
+import { GlobusLadeanzeige } from "@/components/globus-ladeanzeige";
 import { JsonLd, breadcrumbLd } from "@/lib/jsonld";
 import { site, leadership } from "@/content/site";
 import { unterlagen } from "@/content/jugendaemter";
@@ -49,7 +50,9 @@ export default function FallanfragePage() {
             <div className="lg:col-span-7">
               <Suspense
                 fallback={
-                  <div className="h-[42rem] animate-pulse rounded-[var(--radius-xl3)] bg-mist-100" />
+                  <div className="flex h-[42rem] items-center justify-center rounded-[var(--radius-xl3)] bg-mist-50 hairline">
+                    <GlobusLadeanzeige text="Formular wird geladen …" />
+                  </div>
                 }
               >
                 <FallanfrageForm />

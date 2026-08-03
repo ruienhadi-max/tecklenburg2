@@ -13,8 +13,10 @@ import {
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { PhotoFrame } from "@/components/visuals";
+import { Globus } from "@/components/globus";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/lib/jsonld";
 import { angebote, getAngebot } from "@/content/angebote";
+import { standorte } from "@/content/globus";
 import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -168,6 +170,41 @@ export default async function AngebotPage({
           </div>
         </Container>
       </Section>
+
+      {/* Standorte — nur dort, wo es sie gibt. */}
+      {angebot.slug === "individualpaedagogik" ? (
+        <Section tone="deep">
+          <Container width="wide" className="relative">
+            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+              <div className="lg:col-span-6">
+                <Reveal>
+                  <SectionHeader
+                    tone="light"
+                    eyebrow="Standorte"
+                    title="Ein Ort, der Abstand schafft."
+                    lead="Unsere individualpädagogischen Maßnahmen finden an festen Standorten im europäischen Ausland und in Namibia statt. Jeder wird vor der Belegung geprüft und mindestens monatlich persönlich besucht."
+                  />
+                </Reveal>
+                <Reveal delay={120}>
+                  <ul className="mt-10 flex flex-wrap gap-2.5">
+                    {standorte.map((s) => (
+                      <li key={s.name}>
+                        <Tag tone="light">{s.name}</Tag>
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              </div>
+
+              <Reveal delay={100} className="lg:col-span-6">
+                <div className="flex justify-center">
+                  <Globus size={380} />
+                </div>
+              </Reveal>
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       {/* Alltag & Jugendamt-Perspektive */}
       <Section>

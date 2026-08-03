@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { cx, Check, Arrow } from "./ui";
+import { GlobusLadeanzeige } from "./globus-ladeanzeige";
 import { angebote } from "@/content/angebote";
 
 /**
@@ -70,6 +71,14 @@ export function FallanfrageForm() {
     }
   }
 
+  if (status === "sending") {
+    return (
+      <div className="flex min-h-[32rem] items-center justify-center rounded-[var(--radius-xl3)] bg-mist-50 p-10 hairline">
+        <GlobusLadeanzeige text="Ihre Anfrage wird übermittelt …" size={200} />
+      </div>
+    );
+  }
+
   if (status === "success") {
     return (
       <div className="rounded-[var(--radius-xl3)] bg-white p-10 text-center hairline sm:p-14">
@@ -110,7 +119,9 @@ export function FallanfrageForm() {
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <fieldset disabled={status === "sending"} className="space-y-8">
+      {/* Kein disabled nötig: Während des Sendens rendert die Komponente
+          oben die Ladeanzeige statt des Formulars. */}
+      <fieldset className="space-y-8">
         <legend className="sr-only">Fallanfrage</legend>
 
         {/* Jugendamt */}
@@ -307,10 +318,10 @@ export function FallanfrageForm() {
         <div className="flex flex-wrap items-center gap-5">
           <button
             type="submit"
-            className="group inline-flex items-center gap-2.5 rounded-full bg-pine-800 px-8 py-4 font-medium text-white transition-all duration-300 hover:bg-pine-700 hover:shadow-[0_12px_28px_-14px_rgb(16_56_43/0.8)] disabled:cursor-wait disabled:opacity-70"
+            className="group inline-flex items-center gap-2.5 rounded-full bg-pine-800 px-8 py-4 font-medium text-white transition-all duration-300 hover:bg-pine-700 hover:shadow-[0_12px_28px_-14px_rgb(16_56_43/0.8)]"
           >
-            {status === "sending" ? "Wird gesendet …" : "Fallanfrage absenden"}
-            {status === "sending" ? null : <Arrow />}
+            Fallanfrage absenden
+            <Arrow />
           </button>
           <p className="text-[0.88rem] text-ink-500">
             Rückmeldung werktags innerhalb von 48 Stunden.

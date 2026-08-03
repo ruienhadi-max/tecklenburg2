@@ -131,6 +131,36 @@ Die lokale Datei `Imagefilm_Tecklenburg_Version2.mp4` (1,4 GB) eignet sich nicht
 zum Selbsthosten. Falls das später gewünscht ist, bräuchte es eine transkodierte
 Web-Fassung — dann entfiele der externe Dienst vollständig.
 
+## Globus
+
+`components/globus.tsx` zeichnet die Standorte der Individualpädagogik auf eine
+rotierende Kugel. Er wird an zwei Stellen eingesetzt:
+
+- als Ladeanzeige (`components/globus-ladeanzeige.tsx`) beim Absenden der
+  Fallanfrage und als Suspense-Fallback der Formularseite,
+- als Abschnitt auf `/angebote/individualpaedagogik`, wo die Standorte
+  inhaltlich zur Sache gehören.
+
+Die Vorlage auf der bestehenden Seite (`/globus`) nutzt three.js und rund
+2,5 MB Texturen — insgesamt 3,1 MB. Als Ladeelement wäre das das langsamste
+Element der Seite: Man bräuchte einen Ladeindikator für den Ladeindikator.
+
+Diese Fassung kommt ohne Bibliothek, ohne WebGL und ohne Netzwerkanfrage aus.
+Gezeichnet wird mit dem 2D-Canvas-Kontext in orthografischer Projektion; die
+Küstenlinien liegen als Datenmodul bei (**18 KB gzip**). Standorte stehen in
+`content/globus.ts`.
+
+Die Küstendaten erzeugt `globus-daten.mjs` aus dem Natural-Earth-110m-Datensatz
+(`world-atlas`, nur devDependency):
+
+```bash
+node globus-daten.mjs
+```
+
+Koordinaten werden dabei auf 0,1° gerundet — bei einem Globus von rund 300 px
+Durchmesser ist das deutlich feiner als ein Pixel. Bei `prefers-reduced-motion`
+steht die Kugel still.
+
 ## Datenschutz
 
 Die Seite lädt keine externen Ressourcen: keine Cookies, keine Google Fonts, keine
