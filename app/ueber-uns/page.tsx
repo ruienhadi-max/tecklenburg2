@@ -44,9 +44,11 @@ export default function UeberUnsPage() {
           </>
         }
         aside={
+          // Bewusst quer: Ein 4:5-Zuschnitt schneidet die Gruppe an beiden
+          // Rändern an. Das ganze Team ist hier die Aussage.
           <PhotoFrame
-            ratio="portrait"
-            bild="team-terrasse-hoch"
+            ratio="landscape"
+            bild="team-terrasse"
             alt="Das Team der Jugendhilfe Tecklenburg vor dem Haus in Ibbenbüren"
             priority
             className="shadow-[var(--shadow-lift)]"

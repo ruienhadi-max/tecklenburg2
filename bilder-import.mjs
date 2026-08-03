@@ -42,24 +42,18 @@ const bilder = [
   // --- Szenen -----------------------------------------------------------
   // Zwei Kolleg:innen im Gespräch am Besprechungstisch
   { q: "Situationsarbeit im Team Einrichtungsleitung 2.jpg", z: "gespraech-leitung", f: "portraet", pos: "attention" },
-  { q: "Situationsarbeit im Team Einrichtungsleitung 2.jpg", z: "gespraech-leitung-quer", f: "quer", pos: "attention" },
   // Fachliche Arbeit am Tisch, Whiteboard im Hintergrund
   { q: "Situationsarbeit im Team.jpg", z: "fachliche-arbeit", f: "quer", pos: "attention" },
-  { q: "Situationsarbeit im Team.jpg", z: "fachliche-arbeit-hoch", f: "portraet", pos: "attention" },
   // Büroalltag mit Bürohund
   { q: "Situationsarbeit im Team hinten.jpg", z: "bueroalltag", f: "quer", pos: "attention" },
   // Kollegiale Beratung im Sitzkreis
   { q: "Situationsarbeit im Team4.jpg", z: "kollegiale-beratung", f: "quer", pos: "attention" },
   // Besprechung mit mehreren Personen
   { q: "Situationsarbeit im Team wieder.jpg", z: "besprechung", f: "quer", pos: "attention" },
-  { q: "Situationsarbeit im Team again.jpg", z: "besprechung-laptop", f: "portraet", pos: "attention" },
   // Gesamtes Team vor dem Haus
   { q: "Teamfoto vor dem BueroDSC02523.jpg", z: "team-vor-dem-haus", f: "quer", pos: "attention" },
   // Gesamtes Team auf der Terrasse
   { q: "TeamfotosDSC02477.jpg", z: "team-terrasse", f: "quer", pos: "attention" },
-  { q: "TeamfotosDSC02477.jpg", z: "team-terrasse-hoch", f: "portraet", pos: "attention" },
-  // Team am Konferenztisch
-  { q: "Teamfoto am KonferenztischDSC02561.jpg", z: "team-konferenztisch", f: "quer", pos: "attention" },
 ];
 
 mkdirSync(OUT, { recursive: true });
