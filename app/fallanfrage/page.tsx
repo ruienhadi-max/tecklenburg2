@@ -3,7 +3,7 @@ import { Container, Section, Card, CheckList } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { FallanfrageForm } from "@/components/fallanfrage-form";
-import { GlobusLadeanzeige } from "@/components/globus-ladeanzeige";
+import { Weltkugel } from "@/components/weltkugel";
 import { JsonLd, breadcrumbLd } from "@/lib/jsonld";
 import { site, leadership } from "@/content/site";
 import { unterlagen } from "@/content/jugendaemter";
@@ -50,8 +50,11 @@ export default function FallanfragePage() {
             <div className="lg:col-span-7">
               <Suspense
                 fallback={
-                  <div className="flex h-[42rem] items-center justify-center rounded-[var(--radius-xl3)] bg-mist-50 hairline">
-                    <GlobusLadeanzeige text="Formular wird geladen …" />
+                  <div className="flex h-[42rem] flex-col items-center justify-center gap-6 rounded-[var(--radius-xl3)] bg-pine-950 hairline">
+                    <Weltkugel size={240} />
+                    <p className="text-[0.92rem] text-sage-200/80">
+                      Formular wird geladen …
+                    </p>
                   </div>
                 }
               >

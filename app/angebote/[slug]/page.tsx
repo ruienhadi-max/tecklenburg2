@@ -13,7 +13,7 @@ import {
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { PhotoFrame } from "@/components/visuals";
-import { Globus } from "@/components/globus";
+import { Weltkugel } from "@/components/weltkugel";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/lib/jsonld";
 import { angebote, getAngebot } from "@/content/angebote";
 import { standorte } from "@/content/globus";
@@ -198,7 +198,7 @@ export default async function AngebotPage({
 
               <Reveal delay={100} className="lg:col-span-6">
                 <div className="flex justify-center">
-                  <Globus size={380} />
+                  <Weltkugel size={380} />
                 </div>
               </Reveal>
             </div>

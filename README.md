@@ -131,35 +131,48 @@ Die lokale Datei `Imagefilm_Tecklenburg_Version2.mp4` (1,4 GB) eignet sich nicht
 zum Selbsthosten. Falls das später gewünscht ist, bräuchte es eine transkodierte
 Web-Fassung — dann entfiele der externe Dienst vollständig.
 
-## Globus
+## Ladeseite mit der Weltkugel
 
-`components/globus.tsx` zeichnet die Standorte der Individualpädagogik auf eine
-rotierende Kugel. Er wird an zwei Stellen eingesetzt:
+`components/ladeseite.tsx` legt eine ganzflächige Ladeseite über den Inhalt —
+beim Aufruf der **Startseite** und beim **Absenden der Fallanfrage**. Darauf
+läuft die Weltkugel aus `components/weltkugel.tsx`: eine texturierte Kugel
+(three.js) mit Wolkenschicht, Atmosphärensaum, Standortmarken und
+Großkreisbögen vom Verwaltungssitz aus. Standorte stehen in `content/globus.ts`.
 
-- als Ladeanzeige (`components/globus-ladeanzeige.tsx`) beim Absenden der
-  Fallanfrage und als Suspense-Fallback der Formularseite,
-- als Abschnitt auf `/angebote/individualpaedagogik`, wo die Standorte
-  inhaltlich zur Sache gehören.
+Dieselbe Kugel steht als Abschnitt auf `/angebote/individualpaedagogik`.
 
-Die Vorlage auf der bestehenden Seite (`/globus`) nutzt three.js und rund
-2,5 MB Texturen — insgesamt 3,1 MB. Als Ladeelement wäre das das langsamste
-Element der Seite: Man bräuchte einen Ladeindikator für den Ladeindikator.
+### Was das kostet
 
-Diese Fassung kommt ohne Bibliothek, ohne WebGL und ohne Netzwerkanfrage aus.
-Gezeichnet wird mit dem 2D-Canvas-Kontext in orthografischer Projektion; die
-Küstenlinien liegen als Datenmodul bei (**18 KB gzip**). Standorte stehen in
-`content/globus.ts`.
+| | |
+| --- | --- |
+| three.js | ~178 KB gzip |
+| Texturen | 435 KB |
 
-Die Küstendaten erzeugt `globus-daten.mjs` aus dem Natural-Earth-110m-Datensatz
-(`world-atlas`, nur devDependency):
+Die Texturen stammen aus der Vorlage (`/globus` der bestehenden Seite), sind
+aber von 2,47 MB auf 435 KB gebracht: WebP statt JPG/PNG, Farbkarte auf
+2048 × 1024, die übrigen auf 1024 × 512. Bei einer Kugel von 340–420 px ist das
+mehr als ausreichend.
 
-```bash
-node globus-daten.mjs
-```
+**Auf der Startseite verzögert die Ladeseite die erste Interaktion um gut eine
+Sekunde.** Das ist der bewusst in Kauf genommene Preis für den Auftritt. Wer das
+später anders gewichtet, entfernt `<Ladeseite />` aus `app/page.tsx` — die
+Startseite ist dann sofort da, und die Kugel bleibt beim Formular und auf der
+Individualpädagogik-Seite erhalten.
 
-Koordinaten werden dabei auf 0,1° gerundet — bei einem Globus von rund 300 px
-Durchmesser ist das deutlich feiner als ein Pixel. Bei `prefers-reduced-motion`
-steht die Kugel still.
+### Absicherungen
+
+Eine Ladeseite, die hängen bleibt, macht die Website unbenutzbar. Deshalb:
+
+- Sie wird **serverseitig mitgerendert**, damit die Startseite nicht kurz
+  aufblitzt, bevor sie verdeckt wird.
+- Der Seiteninhalt bleibt vollständig im Dokument — Suchmaschinen sehen die
+  ganze Seite, die Kugel liegt nur darüber.
+- Sie verschwindet nach spätestens **5 Sekunden**, auch wenn WebGL fehlt oder
+  eine Textur nicht lädt.
+- **Esc** und die Schaltfläche „Überspringen“ beenden sie sofort.
+- Ohne JavaScript wird sie per `<noscript>`-Regel gar nicht erst angezeigt.
+- Ohne WebGL erscheint statt der Kugel eine ruhige Fläche in Markenfarben.
+- Bei `prefers-reduced-motion` dreht sich nichts.
 
 ## Datenschutz
 

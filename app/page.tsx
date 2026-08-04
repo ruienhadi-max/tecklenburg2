@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container, Section, SectionHeader, ButtonLink, TextLink, Tag, Arrow, Check } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
+import { Ladeseite } from "@/components/ladeseite";
 import { Portrait } from "@/components/person";
 import { ContourField, AuraBlob, PhotoFrame } from "@/components/visuals";
 import { angebote } from "@/content/angebote";
@@ -56,6 +57,10 @@ const vertrauen = [
 export default function HomePage() {
   return (
     <>
+      {/* Ladeseite beim Aufruf der Startseite. Der Seiteninhalt bleibt
+          vollstaendig im Dokument — die Kugel liegt nur darueber. */}
+      <Ladeseite />
+
       {/* ---------------------------------------------------------------- Hero */}
       <section className="relative overflow-hidden bg-paper">
         <ContourField className="inset-0 h-full w-full" />
