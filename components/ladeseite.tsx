@@ -23,7 +23,14 @@ import { cx } from "./ui";
  *   man nicht wegklicken kann, ist eine Barriere.
  */
 
-const MIN_DAUER = 1200;
+/**
+ * Mindestdauer der Anzeige. Die Texturen sind meist nach deutlich unter einer
+ * Sekunde da — ohne diese Untergrenze wäre die Kugel nur ein Aufblitzen und
+ * würde gar nicht als Auftritt wahrgenommen.
+ */
+const MIN_DAUER = 2500;
+
+/** Notausstieg, falls die Kugel nie meldet (kein WebGL, Textur fehlt). */
 const MAX_DAUER = 5000;
 
 export function Ladeseite({

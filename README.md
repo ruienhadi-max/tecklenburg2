@@ -154,9 +154,11 @@ aber von 2,47 MB auf 435 KB gebracht: WebP statt JPG/PNG, Farbkarte auf
 2048 × 1024, die übrigen auf 1024 × 512. Bei einer Kugel von 340–420 px ist das
 mehr als ausreichend.
 
-**Die Ladeseite verzögert die erste Interaktion um rund 1,7 Sekunden** — 1,2 s
-Mindestdauer plus 0,5 s Ausblendung. Die Texturen sind deutlich früher da (lokal
-nach knapp 80 ms), die Dauer ist also bewusst gesetzt, nicht technisch bedingt.
+**Die Ladeseite verzögert die erste Interaktion um rund 3 Sekunden** — 2,5 s
+Mindestdauer (`MIN_DAUER`) plus 0,5 s Ausblendung. Die Texturen sind deutlich
+früher da (lokal nach knapp 80 ms), die Dauer ist also bewusst gesetzt, nicht
+technisch bedingt. Bei 1,2 s war sie so kurz, dass sie kaum als Auftritt
+wahrgenommen wurde.
 
 Das gilt jetzt für jede Seite, auch für Einstiege aus der Suche direkt auf
 `/karriere` oder `/fuer-jugendaemter`. Wer das später anders gewichtet:
