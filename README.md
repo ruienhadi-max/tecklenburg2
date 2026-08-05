@@ -133,8 +133,9 @@ Web-Fassung — dann entfiele der externe Dienst vollständig.
 
 ## Ladeseite mit der Weltkugel
 
-`components/ladeseite.tsx` legt eine ganzflächige Ladeseite über den Inhalt —
-beim Aufruf der **Startseite** und beim **Absenden der Fallanfrage**. Darauf
+`components/ladeseite.tsx` legt eine ganzflächige Ladeseite über den Inhalt. Sie
+steht im Root-Layout (`app/layout.tsx`) und erscheint damit **beim Aufruf jeder
+Seite** — dazu ein zweites Mal beim **Absenden der Fallanfrage**. Darauf
 läuft die Weltkugel aus `components/weltkugel.tsx`: eine texturierte Kugel
 (three.js) mit Wolkenschicht, Atmosphärensaum, Standortmarken und
 Großkreisbögen vom Verwaltungssitz aus. Standorte stehen in `content/globus.ts`.
@@ -153,11 +154,22 @@ aber von 2,47 MB auf 435 KB gebracht: WebP statt JPG/PNG, Farbkarte auf
 2048 × 1024, die übrigen auf 1024 × 512. Bei einer Kugel von 340–420 px ist das
 mehr als ausreichend.
 
-**Auf der Startseite verzögert die Ladeseite die erste Interaktion um gut eine
-Sekunde.** Das ist der bewusst in Kauf genommene Preis für den Auftritt. Wer das
-später anders gewichtet, entfernt `<Ladeseite />` aus `app/page.tsx` — die
-Startseite ist dann sofort da, und die Kugel bleibt beim Formular und auf der
-Individualpädagogik-Seite erhalten.
+**Die Ladeseite verzögert die erste Interaktion um rund 1,7 Sekunden** — 1,2 s
+Mindestdauer plus 0,5 s Ausblendung. Die Texturen sind deutlich früher da (lokal
+nach knapp 80 ms), die Dauer ist also bewusst gesetzt, nicht technisch bedingt.
+
+Das gilt jetzt für jede Seite, auch für Einstiege aus der Suche direkt auf
+`/karriere` oder `/fuer-jugendaemter`. Wer das später anders gewichtet:
+
+- **Kürzer:** `MIN_DAUER` in `components/ladeseite.tsx` herabsetzen.
+- **Nur auf der Startseite:** `<Ladeseite />` aus `app/layout.tsx` nehmen und in
+  `app/page.tsx` einsetzen.
+- **Ganz ohne:** aus `app/layout.tsx` entfernen — die Kugel bleibt dann beim
+  Formular und auf der Individualpädagogik-Seite erhalten.
+
+Beim Wechsel zwischen Seiten erscheint sie **nicht** erneut: Das Root-Layout
+bleibt bei der Client-Navigation bestehen, die Ladeseite also ausgeblendet.
+Sonst läge zwischen jedem internen Klick eine Vollbildsperre.
 
 ### Absicherungen
 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Ladeseite } from "@/components/ladeseite";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd, organizationLd, websiteLd } from "@/lib/jsonld";
@@ -62,6 +63,13 @@ export default function RootLayout({
     <html lang="de">
       <body className="min-h-dvh bg-paper antialiased">
         <JsonLd data={[organizationLd(), websiteLd()]} />
+
+        {/* Ladeseite bei jedem Seitenaufruf. Sie liegt im Root-Layout und
+            bleibt danach ausgeblendet — beim Wechsel zwischen Seiten
+            erscheint sie also nicht erneut. Der Seiteninhalt steht
+            vollstaendig im Dokument, die Kugel liegt nur darueber. */}
+        <Ladeseite />
+
         <SiteHeader />
         <main id="hauptinhalt">{children}</main>
         <SiteFooter />
